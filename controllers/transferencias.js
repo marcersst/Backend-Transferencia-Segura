@@ -1,5 +1,6 @@
 const {response, request}= require("express");
-const Transferencia= require("../models/transferencia")
+const Transferencia= require("../models/transferencia");
+const transferencia = require("../models/transferencia");
 
 
 const posteoTransferencia = async(req= request, res = response) => {
@@ -34,13 +35,14 @@ const actualizarTransferencia = async (req, res = response) => {
     }
 }
 
-const obtenerTransferencia = async (req, res = response) => {
+const obtenerTransferencias = async (req, res = response) => {
     try {
        
-        const { creador, destino, firmante1, firmante2 } = req.query;
+        const { id, creador, destino, firmante1, firmante2 } = req.query;
 
         // creo el filtro 
         const filtro = {};
+        if (id) filtro.id = id;
         if (creador) filtro.creador = creador;
         if (destino) filtro.destino = destino;
         if (firmante1) filtro.firmante1 = firmante1;
@@ -61,11 +63,33 @@ const obtenerTransferencia = async (req, res = response) => {
         console.error("error al obtener las transferencias:", error);
         res.status(500).json({ mensaje: "error al obtener las transferencias" });
     }
+
 };
+
+const obtenerTransferencia = async(req, res=response)=>{
+    try {
+        const {id}=req.params
+        const transferencia= await Transferencia.find(id)
+    
+        res.json({
+            transferencia
+         })
+        
+    } catch (error) {
+        res.status(505).json({
+            mensage:"no se encotro transferencia"
+        })
+        
+    }
+    
+    
+
+}
 
 
 module.exports={
     posteoTransferencia,
     actualizarTransferencia,
+    obtenerTransferencias,
     obtenerTransferencia
 }

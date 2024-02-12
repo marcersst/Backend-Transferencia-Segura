@@ -7,7 +7,7 @@ const TransferenciaSchema = Schema({
     },
 
     id: {
-        type: String,
+        type: Number,
         unique: true
 
     },
