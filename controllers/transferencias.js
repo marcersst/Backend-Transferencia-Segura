@@ -69,7 +69,7 @@ const obtenerTransferencias = async (req, res = response) => {
 const obtenerTransferencia = async(req, res=response)=>{
     try {
         const {id}=req.params
-        const transferencia= await Transferencia.find(id)
+        const transferencia= await Transferencia.findOne({id: parseInt(id)})
     
         res.json({
             transferencia
