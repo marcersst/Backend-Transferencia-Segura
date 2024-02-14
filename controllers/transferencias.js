@@ -38,7 +38,7 @@ const actualizarTransferencia = async (req, res = response) => {
 const obtenerTransferencias = async (req, res = response) => {
     try {
        
-        const { id, creador, destino, firmante1, firmante2 } = req.query;
+        const { id, creador, destino, firmantes } = req.query;
 
         // creo el filtro 
         const filtro = {};
@@ -46,7 +46,15 @@ const obtenerTransferencias = async (req, res = response) => {
         if (creador) filtro.creador = creador;
         if (destino) filtro.destino = destino;
         if (firmante1) filtro.firmante1 = firmante1;
-        if (firmante2) filtro.firmante2 = firmante2;
+       
+       //arreglo en firmantes para unificar la busqueda en un solo criterio
+        if (firmantes) 
+            {
+                filtro.$or =[
+                    { firmante1: firmantes },
+                    {firmante2: firmantes}
+                ]
+            }
 
         // busco la stransferencias segun mi filtro
         const transferencias = await Transferencia.find(filtro);
