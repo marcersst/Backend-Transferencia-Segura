@@ -31,7 +31,7 @@ const TransferenciaSchema = Schema({
     },
 
     fecha: {
-        type: Date,
+        type: String,
     },
 
     ejecutada: {
