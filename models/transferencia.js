@@ -12,6 +12,12 @@ const TransferenciaSchema = Schema({
 
     },
 
+    creador:{
+    type:String
+    },
+    
+    
+
     firmante1: {
         type: String,
     },
@@ -25,7 +31,7 @@ const TransferenciaSchema = Schema({
     },
 
     fecha: {
-        type: String,
+        type: Date,
     },
 
     ejecutada: {
@@ -34,7 +40,7 @@ const TransferenciaSchema = Schema({
     
     valor:{
         type: Number
-    }
+    },
 });
 
 
