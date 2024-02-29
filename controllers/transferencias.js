@@ -23,7 +23,7 @@ const actualizarTransferencia = async (req, res = response) => {
         const transferencia = await Transferencia.findOneAndUpdate({ id }, { ejecutada }, { new: true });
 
         if (!transferencia) {
-            return res.status(404).json({ message: "Transferencia no encontrada" });
+            return res.json({ message: "Transferencia no encontrada" });
         }
 
         res.json({
