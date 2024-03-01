@@ -60,7 +60,7 @@ const obtenerTransferencias = async (req, res = response) => {
 
        // si no hay resultados devuelvo un mensaje en consola
         if (transferencias.length === 0) {
-            return res.json({ mensaje: "No hay transferencias." });
+            return res.json([]);
         }
 
         // envio la respuesta
