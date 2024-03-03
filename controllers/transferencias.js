@@ -44,7 +44,7 @@ const obtenerTransferencias = async (req, res = response) => {
         const filtro = {};
         if (id) filtro.id = id;
         if (creador) filtro.creador = creador;
-        if (destino) filtro.destino = destino;
+        if (destino) filtro.destino = destinatario;
        
        //arreglo en firmantes para unificar la busqueda en un solo criterio
         if (firmantes) 
