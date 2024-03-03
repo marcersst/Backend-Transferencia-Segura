@@ -26,7 +26,7 @@ const TransferenciaSchema = Schema({
         type: String,
     },
 
-    destinatario: {
+    destino: {
         type: String,
     },
 
