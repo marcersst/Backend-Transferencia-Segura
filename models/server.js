@@ -26,7 +26,7 @@ class Server {
         await dbConnection();
     }
 
-        chequearOrigen(req, res, next) {
+        chequearOrigen=(req, res, next) => {
             const webs = ['https://transferenciasegura.netlify.app'];
             const origen = req.headers.origin;
             if (webs.includes(origen)) {
