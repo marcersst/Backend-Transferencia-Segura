@@ -37,7 +37,9 @@ const TransferenciaSchema = Schema({
     ejecutada: {
         type: Boolean,
     },
-    
+    moneda: {
+        type: String
+    },
     valor:{
         type: Number
     },
