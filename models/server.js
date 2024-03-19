@@ -26,6 +26,15 @@ class Server {
         await dbConnection();
     }
 
+        checkOrigin(req, res, next) {
+            const webs = ['https://transferenciasegura.netlify.app'];
+            const origen = req.headers.origin;
+            if (webs.includes(origen)) {
+                next();
+            } else {
+                return res.status(403).json({ error: 'Acceso no autorizado desde esta página.' });
+            }
+        }
 
     middlewares() {
         this.app.use( cors() );
@@ -36,15 +45,6 @@ class Server {
         this.app.use(this.chequearOrigen);
 
     }
-        checkOrigin(req, res, next) {
-            const webs = ['https://transferenciasegura.netlify.app'];
-            const origen = req.headers.origin;
-            if (webs.includes(origen)) {
-                next();
-            } else {
-                return res.status(403).json({ error: 'Acceso no autorizado desde esta página.' });
-            }
-        }
 
 
 
