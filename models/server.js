@@ -33,7 +33,7 @@ class Server {
         // lectura y parseo del body
         this.app.use( express.json() );
 
-        this.app.use(this.chequearOrigen() );
+        this.app.use(this.chequearOrigen);
 
     }
         checkOrigin(req, res, next) {
