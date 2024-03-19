@@ -33,9 +33,23 @@ class Server {
         // lectura y parseo del body
         this.app.use( express.json() );
 
+        this.app.use(this.chequearOrigen() );
 
     }
 
+     chequearOrigen(req, res, next) {
+        const web = ['https://transferenciasegura.netlify.app/'];
+        const origen = req.headers.origin;
+        if (web.includes(origen)) {
+            next();
+        } else {
+
+            return res.status(403).json({ error: 'Acceso no autorizado desde esta página.' });
+        }
+    }
+
+
+    
     routes() {
         this.app.use( this.transferenciasPath, require('../routes/transferencias'));
     }
