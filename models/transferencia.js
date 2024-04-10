@@ -6,6 +6,9 @@ const TransferenciaSchema = Schema({
         type: String,
     },
 
+  
+    
+    
     id: {
         type: Number,
         unique: true
@@ -16,8 +19,6 @@ const TransferenciaSchema = Schema({
     type:String
     },
     
-    
-
     firmante1: {
         type: String,
     },
@@ -32,10 +33,6 @@ const TransferenciaSchema = Schema({
 
     fecha: {
         type: String,
-    },
-
-    ejecutada: {
-        type: Boolean,
     },
     moneda: {
         type: String
