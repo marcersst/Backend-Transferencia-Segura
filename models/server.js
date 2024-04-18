@@ -26,15 +26,20 @@ class Server {
         await dbConnection();
     }
 
-       chequearOrigen=(req, res, next) => {
-            const webs = ['https://tsegura.com/'];
-            const origen = req.headers.origin;
-            if (webs.includes(origen)) {
-                next();
-            } else {
-                return res.status(403).json({ error: 'Acceso no autorizado desde esta página.' });
-            }
-        }
+      chequearOrigen = (req, res, next) => {
+    const websPermitidas = ['http://tsegura.com', 'https://www.tsegura.com'];
+    const origen = req.headers.origin;
+
+    
+    const origenValido = websPermitidas.some(web => origen.startsWith(web));
+
+    if (origenValido) {
+        next();
+    } else {
+        return res.status(403).json({ error: 'Acceso no autorizado desde esta página.' });
+    }
+};
+
         
 
     middlewares() {
