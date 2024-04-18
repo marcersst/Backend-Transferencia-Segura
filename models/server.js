@@ -27,7 +27,7 @@ class Server {
     }
 
        chequearOrigen=(req, res, next) => {
-            const webs = ['http://tsegura.com/'];
+            const webs = ['https://tsegura.com/'];
             const origen = req.headers.origin;
             if (webs.includes(origen)) {
                 next();
